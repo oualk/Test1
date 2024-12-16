@@ -5,9 +5,11 @@
 
 cmake_minimum_required(VERSION 3.22.1)
 
+set(APP_NAME test1)
+
 # Declares and names the project.
 
-project("test1")
+project(${APP_NAME})
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -15,15 +17,15 @@ project("test1")
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-        test1
+        ${APP_NAME}
 
         # Sets the library as a shared library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        native-lib.cpp
-        ../../../../../shared_cpp/test.cpp
-        ../../../../../shared_cpp/test.h
+        android_cpp/jnitest.cpp
+        shared_cpp/test.cpp
+        shared_cpp/test.h
         )
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -44,8 +46,10 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-        test1
+        ${APP_NAME}
 
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})
+
+target_include_directories(${APP_NAME}        PRIVATE shared_cpp)

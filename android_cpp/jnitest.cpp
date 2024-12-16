@@ -1,6 +1,6 @@
 #include <jni.h>
 #include <string>
-#include "../../../../../shared_cpp/test.h"
+#include "../shared_cpp/test.h"
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_example_test1_MainActivity_stringFromJNI(
         JNIEnv* env,
